@@ -1,15 +1,18 @@
 import React from 'react';
 import { useTodoStore } from '../utils/storeUtils';
+import { ToDoListItem } from './ToDoListItem';
 
 export const TodoList = () => {
     const todoList = useTodoStore(state => state.todoList)
-    // TODO: onclick mark done
+
     return (
         <ul>
             {todoList.map((todoItem, id) => (
-                <li key={`${todoItem.title}${id}`}> 
-                    {todoItem.title}
-                </li>
+                <ToDoListItem 
+                    todoItem={todoItem} 
+                    id={id} 
+                    key={`${todoItem.title}${id}`} 
+                />
             ))}
         </ul>
     )

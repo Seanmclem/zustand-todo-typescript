@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { useTodoStore } from '../utils/storeUtils';
+import { useTodoStore, IToDoItem } from '../utils/storeUtils';
 
 export const TodoEntry = () => {
     const addToTodoList = useTodoStore(state => state.addToTodoList) as any
     const [entryValue, setEntryValue] = useState<string>("") 
 
 
-    const updateList = (entryValueUpdate: string) => {
-        addToTodoList(entryValueUpdate)
+    const updateList = (value: string) => {
+        const newItem: IToDoItem = {
+            title: value,
+            done: false
+        }
+        addToTodoList(newItem)
         setEntryValue("")
     }
 

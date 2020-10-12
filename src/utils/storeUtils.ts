@@ -1,11 +1,16 @@
 import create, { SetState } from "zustand";
 
+export interface IToDoItem {
+    title: string;
+    done: boolean;
+}
+
 type ISet = {
-    todoList: string[];
-    addToTodoList: (toAdd: string) => void;
+    todoList: IToDoItem[];
+    addToTodoList: (toAdd: IToDoItem) => void;
 }
 
 export const useTodoStore = create<ISet>((set: SetState<ISet>) => ({
     todoList: [],
-    addToTodoList: (toAdd: string) => set((state: ISet) => ({ todoList: [...state.todoList, toAdd] })),
+    addToTodoList: (toAdd: IToDoItem) => set((state: ISet) => ({ todoList: [...state.todoList, toAdd] })),
 }))

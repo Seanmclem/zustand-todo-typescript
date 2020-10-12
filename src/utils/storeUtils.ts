@@ -8,8 +8,8 @@ export interface IToDoItem {
 type ISet = {
     todoList: IToDoItem[];
     addToTodoList: (toAdd: IToDoItem) => void;
-    removeToDoListItem: any;
-    markDoneToDoListItem: any;
+    removeToDoListItem: (idToRemove: number) => void;
+    markDoneToDoListItem: (idToToggleDone: number) => void;
 }
 
 export const useTodoStore = create<ISet>((set: SetState<ISet>) => ({
